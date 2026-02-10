@@ -1,0 +1,87 @@
+@import '../../styles/variables';
+
+.landing-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        background: $primary-gradient;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: var(--text-color);
+        opacity: 0.8;
+        margin-bottom: 2rem;
+    }
+
+    .world-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
+        width: 100%;
+
+        .world-card {
+            @include glass;
+            padding: 1.5rem;
+            border-radius: $border-radius-lg;
+            cursor: pointer;
+            transition: all $transition-speed ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            &:hover {
+                border-color: $button-primary-color;
+                transform: translateY(-5px);
+                background: var(--card-bg);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            h3 {
+                margin: 0;
+                font-size: 1.25rem;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-height: 700px) {
+    .landing-container {
+        padding: 1rem;
+
+        h1 {
+            margin-bottom: 0.2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .world-buttons {
+        gap: 0.75rem;
+
+        .world-card {
+            padding: 1rem;
+        }
+    }
+}
