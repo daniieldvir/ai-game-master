@@ -1,0 +1,33 @@
+@import '../../../styles/variables';
+
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    @include glass;
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition-speed cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        transform: rotate(15deg) scale(1.1);
+        border-color: $button-primary-color;
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    img,
+    svg {
+        width: 20px;
+        height: 20px;
+        filter: var(--icon-filter);
+        transition: filter 0.3s ease;
+    }
+}
