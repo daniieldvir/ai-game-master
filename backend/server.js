@@ -11,6 +11,11 @@ app.use(express.json());
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
+// Health check endpoint for keep-alive services
+app.get("/ping", (req, res) => {
+    res.json({ status: "alive", timestamp: new Date().toISOString() });
+});
+
 app.post("/api/generate", async (req, res) => {
     try {
         const { world, characterName, charClass, userInput, history, currentStats } = req.body;
