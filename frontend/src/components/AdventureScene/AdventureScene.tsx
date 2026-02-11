@@ -5,7 +5,6 @@ import type { Character, HistoryEntry } from '../../types/gameTypes';
 import './AdventureScene.scss';
 import AdventureControls from "./InternalComponents/AdventureControls";
 import AdventureSidebar from "./InternalComponents/AdventureSidebar";
-import Error from "../UI/Error/Error";
 
 type Props = {
   character: Character;
@@ -20,7 +19,6 @@ export default function AdventureScene({ character, world, initialHistory, onLog
     fullSceneText,
     options,
     loading,
-    error,
     history,
     hp,
     userInput,
@@ -66,17 +64,12 @@ export default function AdventureScene({ character, world, initialHistory, onLog
           )}
         </div>
 
-        {error && (
-          <Error error={error} />
-        )}
-
         {!loading && !isTyping && (
           <AdventureControls
             options={options}
             userInput={userInput}
             setUserInput={setUserInput}
             handleKeyDown={handleKeyDown}
-            loading={loading}
             onSend={onSend}
             inputRef={inputRef}
           />

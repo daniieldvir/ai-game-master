@@ -6,12 +6,11 @@ type Props = {
     options: string[];
     userInput: string;
     inputRef?: React.Ref<HTMLInputElement>;
-    loading: boolean;
     setUserInput: (input: string) => void;
     handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     onSend: (input: string) => void;
 }
-export default function AdventureControls({ options, userInput, inputRef, loading, onSend, setUserInput, handleKeyDown  }: Props) {
+export default function AdventureControls({ options, userInput, inputRef, onSend, setUserInput, handleKeyDown }: Props) {
     return (
         <div className="adventure-controls">
             {options.length > 0 && (
@@ -34,7 +33,7 @@ export default function AdventureControls({ options, userInput, inputRef, loadin
                     onChange={(e) => setUserInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                 />
-                <Button onClick={() => onSend(userInput)} disabled={loading || !userInput.trim()}>
+                <Button onClick={() => onSend(userInput)} disabled={!userInput.trim()}>
                     Send
                 </Button>
             </div>
