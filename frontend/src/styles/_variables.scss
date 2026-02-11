@@ -3,21 +3,25 @@
 // 1. Add it to both :root (light) and [data-theme='dark'] (dark)
 // 2. Map it in the SCSS section below if you want to use it as an SCSS variable.
 :root {
-    // Light Theme
-    --bg-color: #f8fafc;
-    --text-color: #0f172a;
+    // Light Theme (Neutral Slate - Clean & Modern)
+    --bg-color: #f1f5f9;
+    --text-color: #334155;
     --input-bg: #ffffff;
     --card-bg: #ffffff;
-    --border-color: rgba(0, 0, 0, 0.1);
-    --overlay-bg: rgba(15, 23, 42, 0.5);
+    --border-color: rgba(148, 163, 184, 0.2);
+    --overlay-bg: rgba(241, 245, 249, 0.3);
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-bg-hover: rgba(255, 255, 255, 0.9);
     --icon-filter: none;
+    --loading-indicator: rgba(0, 0, 0, 0.03);
+    --loading-indicator-border-color: rgba(99, 102, 241, 0.4);
+    --world-info-color: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme='dark'] {
     // Dark Theme
     --bg-color: #020617;
+    --overlay-bg: rgba(0, 0, 0, 0.4);
     --text-color: #f1f5f9;
     --input-bg: #1e293b;
     --card-bg: #0f172a;
@@ -26,6 +30,9 @@
     --glass-bg: rgba(15, 23, 42, 0.7);
     --glass-bg-hover: rgba(15, 23, 42, 0.9);
     --icon-filter: invert(1);
+    --loading-indicator: rgba(255, 255, 255, 0.03);
+    --loading-indicator-border-color: rgba(99, 102, 241, 0.2);
+    --world-info-color: rgba(255, 255, 255, 0.03);
 }
 
 // --- 2. SCSS VARIABLE MAPPINGS (FOR EASY USE IN STYLES) ---
@@ -44,6 +51,12 @@ $primary-glow: 0 0 15px rgba(99, 102, 241, 0.4);
 $button-primary-color: #6366f1;
 $button-primary-hover: #4f46e5;
 $button-disabled-color: #94a3b8;
+$loading-indicator-border-top-color: white;
+$scrollbar-color: rgba(99, 102, 241, 0.2);
+$scrollbar-hover-color: rgba(99, 102, 241, 0.4);
+$loading-indicator-color: rgba(99, 102, 241, 0.2);
+$scene-card-box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+$hero-class-bg-color: rgba(99, 102, 241, 0.15);
 
 // Timing & Layout
 $transition-speed: 0.3s;
@@ -65,18 +78,18 @@ $border-radius-sm: 8px;
     }
 
     &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.02);
+        background: $scrollbar-color;
         border-radius: 10px;
     }
 
     &::-webkit-scrollbar-thumb {
-        background: rgba($button-primary-color, 0.2);
+        background: $scrollbar-color;
         border-radius: 10px;
         transition: all 0.3s ease;
 
         &:hover {
-            background: rgba($button-primary-color, 0.5);
-            box-shadow: 0 0 8px rgba($button-primary-color, 0.4);
+            background: $scrollbar-hover-color;
+            box-shadow: 0 0 8px $scrollbar-hover-color;
         }
     }
 }

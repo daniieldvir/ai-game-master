@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CloseIcon from '../../assets/SVG/close.svg';
 import type { Character } from '../../types/gameTypes';
 import { CHARACTER_IMAGES, getCharacterImage, type CharacterClass, type Gender } from '../../utils/characterImages';
@@ -15,6 +15,12 @@ export default function CharacterCreation({ onCreateCharacter, onClose }: Props)
     const [name, setName] = useState('');
     const [charClass, setCharClass] = useState<CharacterClass>('Warrior');
     const [gender, setGender] = useState<Gender>('Female');
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        // Force focus on mount
+        inputRef.current?.focus();
+    }, []);
 
     const classes = Object.keys(CHARACTER_IMAGES) as CharacterClass[];
 
@@ -47,6 +53,7 @@ export default function CharacterCreation({ onCreateCharacter, onClose }: Props)
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         maxLength={15}
+                        ref={inputRef}
                     />
                 </div>
 

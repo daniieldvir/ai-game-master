@@ -57,7 +57,7 @@
                 font-size: 0.8rem;
                 font-weight: 600;
                 padding: 0.2rem 0.6rem;
-                background: rgba(99, 102, 241, 0.15);
+                background: $hero-class-bg-color;
                 color: $button-primary-color;
                 border-radius: $border-radius-sm;
                 display: inline-block;
@@ -110,7 +110,7 @@
             gap: 0.5rem;
             color: var(--text-color);
             padding: 0.5rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--world-info-color);
             border-radius: 8px;
 
             span {
@@ -124,11 +124,11 @@
         @include glass;
         padding: 1.25rem;
         border-radius: $border-radius-md;
-        flex: 1;
+        height: 390px;
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
-        min-height: 0; // Crucial for flex child to be scrollable
+        min-height: 0;
         overflow: hidden;
 
         h3 {
@@ -146,7 +146,6 @@
             overflow-y: auto;
             padding-right: 0.5rem;
             min-height: 0;
-            height: 250px;
 
             @include scrollbar;
 
