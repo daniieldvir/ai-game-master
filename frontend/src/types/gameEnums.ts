@@ -7,6 +7,9 @@ export const GameStages = {
 
 export type GameStages = (typeof GameStages)[keyof typeof GameStages];
 
+export type World = {
+    name: WorldsStages;
+  };
 
 export const WorldsStages = {
     Fantasy: 'Fantasy',

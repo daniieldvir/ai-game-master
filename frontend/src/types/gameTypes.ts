@@ -1,8 +1,11 @@
+import type { CharacterClass, Gender } from "../utils/characterImages";
 import type { GameStages, WorldsStages } from "./gameEnums";
 
 export type Character = {
   name: string;
-  class: string;
+  class: CharacterClass;
+  gender: Gender;
+  image?: string;
 };
 
 export type HistoryEntry = {

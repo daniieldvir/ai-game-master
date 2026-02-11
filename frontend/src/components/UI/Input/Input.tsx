@@ -6,11 +6,12 @@ type InputProps = {
     placeholder: string;
     value: string;
     className?: string;
+    maxLength?: number;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ type, placeholder, value, className, onChange, onKeyDown }, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({ type, placeholder, value, className, maxLength, onChange, onKeyDown }, ref) => {
     return (
         <input
             className={`input ${className}`}
@@ -20,6 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ type, placeholder, val
             value={value}
             onChange={onChange}
             onKeyDown={onKeyDown}
+            maxLength={maxLength}
         />
     );
 });

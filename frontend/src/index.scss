@@ -50,3 +50,34 @@ h4 {
 * {
   box-sizing: border-box;
 }
+
+/* Global Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(#6366f1, 0.2); // Using a fixed hex here if $button-primary-color isn't available, but it is imported.
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(#6366f1, 0.5);
+    box-shadow: 0 0 8px rgba(#6366f1, 0.4);
+  }
+}
+
+// Ensure the variable works
+::-webkit-scrollbar-thumb {
+  background: rgba($button-primary-color, 0.2);
+
+  &:hover {
+    background: rgba($button-primary-color, 0.5);
+  }
+}

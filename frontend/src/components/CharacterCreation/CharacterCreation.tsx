@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CloseIcon from '../../assets/SVG/close.svg';
 import type { Character } from '../../types/gameTypes';
+import { CHARACTER_IMAGES, getCharacterImage, type CharacterClass, type Gender } from '../../utils/characterImages';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import './CharacterCreation.scss';
@@ -12,11 +13,19 @@ type Props = {
 
 export default function CharacterCreation({ onCreateCharacter, onClose }: Props) {
     const [name, setName] = useState('');
-    const [charClass, setCharClass] = useState('Warrior');
-    const classes = ['Warrior', 'Mage', 'Rogue', 'Paladin', 'Druid'];
+    const [charClass, setCharClass] = useState<CharacterClass>('Warrior');
+    const [gender, setGender] = useState<Gender>('Female');
+
+    const classes = Object.keys(CHARACTER_IMAGES) as CharacterClass[];
+
 
     const submit = () => {
-        onCreateCharacter({ name, class: charClass });
+        onCreateCharacter({
+            name,
+            class: charClass,
+            gender,
+            image: getCharacterImage(charClass, gender),
+        });
     };
 
     return (
@@ -37,18 +46,46 @@ export default function CharacterCreation({ onCreateCharacter, onClose }: Props)
                         placeholder="Enter hero name..."
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        maxLength={15}
                     />
                 </div>
 
                 <div className="form-group">
                     <label>Choose your path</label>
+
+                    <div className="gender-selection">
+                        <button
+                            className={`gender-btn ${gender === 'Male' ? 'active' : ''}`}
+                            onClick={() => setGender('Male')}
+                        >
+                            Male
+                        </button>
+                        <button
+                            className={`gender-btn ${gender === 'Female' ? 'active' : ''}`}
+                            onClick={() => setGender('Female')}
+                        >
+                            Female
+                        </button>
+                    </div>
+
                     <div className="select-wrapper">
-                        <select value={charClass} onChange={(e) => setCharClass(e.target.value)}>
+                        <select value={charClass} onChange={(e) => setCharClass(e.target.value as CharacterClass)}>
                             {classes.map((c) => (
                                 <option key={c} value={c}>{c}</option>
                             ))}
                         </select>
                     </div>
+
+                    <div className="character-preview">
+                        <img
+                            src={getCharacterImage(charClass, gender)}
+                            alt={charClass}
+                            key={`${charClass}-${gender}`}
+                            className="preview-image"
+                        />
+                    </div>
+
+
                 </div>
 
                 <Button onClick={submit} disabled={!name || !charClass} >
