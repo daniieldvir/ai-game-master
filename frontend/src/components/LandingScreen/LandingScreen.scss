@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixin';
 
 .landing-container {
     max-width: 1000px;
@@ -35,6 +36,7 @@
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
+
 
         .world-card {
             @include glass;
