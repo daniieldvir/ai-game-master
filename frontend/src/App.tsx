@@ -7,7 +7,8 @@ import SummaryScreen from './components/SummaryScreen/SummaryScreen';
 import ThemeToggle from './components/UI/ThemeToggle/ThemeToggle';
 import { GameStages, WorldsStages } from './types/gameEnums';
 import type { Character, GameState } from './types/gameTypes';
-import { getBackgroundImage, initGameState } from './utils/helpers';
+import { initGameState } from './utils/helpers';
+import { getBackgroundImage } from './utils/worldsImages';
 
 
 function App() {

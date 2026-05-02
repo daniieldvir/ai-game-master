@@ -1,0 +1,31 @@
+:root {
+    // Light Theme (Neutral Slate - Clean & Modern)
+    --bg-color: #f1f5f9;
+    --text-color: #334155;
+    --input-bg: #ffffff;
+    --card-bg: #ffffff;
+    --border-color: rgba(148, 163, 184, 0.2);
+    --overlay-bg: rgba(241, 245, 249, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-bg-hover: rgba(255, 255, 255, 0.9);
+    --icon-filter: none;
+    --loading-indicator: rgba(0, 0, 0, 0.03);
+    --loading-indicator-border-color: rgba(99, 102, 241, 0.4);
+    --world-info-color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='dark'] {
+    // Dark Theme
+    --bg-color: #020617;
+    --overlay-bg: rgba(0, 0, 0, 0.4);
+    --text-color: #f1f5f9;
+    --input-bg: #1e293b;
+    --card-bg: #0f172a;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-bg-hover: rgba(15, 23, 42, 0.9);
+    --icon-filter: invert(1);
+    --loading-indicator: rgba(255, 255, 255, 0.03);
+    --loading-indicator-border-color: rgba(99, 102, 241, 0.2);
+    --world-info-color: rgba(255, 255, 255, 0.03);
+}

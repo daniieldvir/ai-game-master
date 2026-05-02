@@ -1,25 +1,14 @@
 import { forwardRef } from 'react';
 import './Input.scss';
 
-type InputProps = {
-    type: string;
-    placeholder: string;
-    value: string;
-    className?: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-};
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ type, placeholder, value, className, onChange, onKeyDown }, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
     return (
         <input
-            className={`input ${className}`}
+            className={`input ${className || ''}`}
             ref={ref}
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            onKeyDown={onKeyDown}
+            {...props}
         />
     );
 });

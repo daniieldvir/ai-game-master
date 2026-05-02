@@ -1,13 +1,14 @@
 @import '../../styles/variables';
+@import '../../styles/mixin';
 
 .adventure-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-columns: minmax(0, 1fr) 320px;
     gap: 2rem;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 40px);
     width: 100%;
     overflow: hidden;
 
@@ -17,17 +18,17 @@
         gap: 1.5rem;
         height: 100%;
         width: 100%;
-        min-width: 500px;
+
 
         .scene-card {
             @include glass;
             background: var(--card-bg);
-            padding: 2.5rem;
+            padding: 1.5rem;
             border-radius: $border-radius-lg;
             animation: fadeIn 0.8s ease;
-            line-height: 1.8;
-            font-size: 1.15rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            box-shadow: $scene-card-box-shadow;
             display: flex;
             flex-direction: column;
             flex: 1;
@@ -35,23 +36,7 @@
             min-height: 0;
             overflow-y: auto;
 
-
-            &::-webkit-scrollbar {
-                width: 6px;
-            }
-
-            &::-webkit-scrollbar-track {
-                background: transparent;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background: rgba(99, 102, 241, 0.2);
-                border-radius: 10px;
-            }
-
-            &::-webkit-scrollbar-thumb:hover {
-                background: rgba(99, 102, 241, 0.4);
-            }
+            @include scrollbar;
 
             .scene-text {
                 white-space: pre-wrap;
@@ -75,9 +60,9 @@
                 justify-content: center;
                 margin-top: 1.5rem;
                 padding: 1rem;
-                background: rgba(255, 255, 255, 0.03);
+                background: var(--loading-indicator);
                 border-radius: 8px;
-                color: rgba(255, 255, 255, 0.8);
+                color: var(--text-color);
                 font-style: italic;
                 font-size: 0.95rem;
                 gap: 10px;
@@ -88,8 +73,8 @@
                     content: '';
                     width: 16px;
                     height: 16px;
-                    border: 2px solid rgba(255, 255, 255, 0.2);
-                    border-top-color: white; 
+                    border: 2px solid var(--loading-indicator-border-color);
+                    border-top-color: var(--loading-indicator-border-top-color);
                     border-radius: 50%;
                     animation: spin 1s linear infinite;
                 }

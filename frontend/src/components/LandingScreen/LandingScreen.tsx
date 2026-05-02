@@ -1,4 +1,5 @@
-import { WorldsStages } from "../../types/gameEnums";
+import { WorldsStages, type World } from "../../types/gameEnums";
+import { getWorldPicture } from "../../utils/worldsImages";
 import Button from "../UI/Button/Button";
 import './LandingScreen.scss';
 
@@ -7,12 +8,14 @@ type Props = {
 };
 
 export default function LandingScreen({ onSelectWorld }: Props) {
-  const worlds = [
-    { name: WorldsStages.Fantasy, icon: '⚔️' },
-    { name: WorldsStages.Space, icon: '🚀' },
-    { name: WorldsStages.Zombie, icon: '🧟' },
-    { name: WorldsStages.Mystery, icon: '🔍' }
+
+  const worlds: World[] = [
+    { name: WorldsStages.Fantasy },
+    { name: WorldsStages.Space },
+    { name: WorldsStages.Zombie },
+    { name: WorldsStages.Mystery },
   ];
+
 
   return (
     <div className="landing-container">
@@ -21,7 +24,9 @@ export default function LandingScreen({ onSelectWorld }: Props) {
       <div className="world-buttons">
         {worlds.map((world) => (
           <div key={world.name} className="world-card" onClick={() => onSelectWorld(world.name)}>
-            <span style={{ fontSize: '3rem' }}>{world.icon}</span>
+            <div className="world-image-container">
+              <img src={getWorldPicture(world.name)} alt={world.name} />
+            </div>
             <h3>{world.name}</h3>
             <Button>Explore</Button>
           </div>

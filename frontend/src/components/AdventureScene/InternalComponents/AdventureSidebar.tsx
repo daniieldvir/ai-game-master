@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import type { Character, HistoryEntry } from "../../../types/gameTypes";
+import { getCharacterImage } from "../../../utils/characterImages";
 import Progressbar from "../../UI/Progressbar/Progressbar";
 import './AdventureSidebar.scss';
 
@@ -18,8 +19,17 @@ export default function AdventureSidebar({ character, hp, world, history, onLeav
         <aside className="adventure-sidebar">
             <div className="stat-card">
                 <h3>Active Hero</h3>
-                <div className="hero-name">{character.name}</div>
-                <div className="hero-class">{character.class}</div>
+
+                <div className="hero-main-row">
+                    <div className="hero-info-container">
+                        <div className="hero-name">{character.name}</div>
+                        <span className="hero-class">{character.class}</span>
+                    </div>
+                    <div className="character-avatar">
+                        <img src={character.image || getCharacterImage(character.class)} alt={character.name} />
+                    </div>
+                </div>
+
 
                 <div className="hp-bar-container">
                     <div className="hp-label">
@@ -30,23 +40,25 @@ export default function AdventureSidebar({ character, hp, world, history, onLeav
                 </div>
 
                 <div className="world-info">
-                    <span>📍</span> {world}
+                    <span>🧭</span> {world}
                 </div>
             </div>
 
             <div className="history-card">
                 <h3>Adventure Log</h3>
-                {history.length === 0 && (
-                    <p className="empty-history">Your journey has just begun...</p>
-                )}
-                {reversedHistory.map((item, idx) => (
-                    <div key={idx} className="history-item">
-                        <span className="history-action">➜ {item.userInput}</span>
-                        <span className="history-scene-preview">
-                            {item.scene}
-                        </span>
-                    </div>
-                ))}
+                <div className="history-list">
+                    {history.length === 0 && (
+                        <p className="empty-history">Your journey has just begun...</p>
+                    )}
+                    {reversedHistory.map((item, idx) => (
+                        <div key={idx} className="history-item">
+                            <span className="history-action">➜ {item.userInput}</span>
+                            <span className="history-scene-preview">
+                                {item.scene}
+                            </span>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <button className="leave-button" onClick={onLeave}>
